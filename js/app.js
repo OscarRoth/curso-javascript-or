@@ -2,6 +2,7 @@
 //elegir categoría y luego sumar cantidad de esa categoría
 //me base en ejemplos vistos en clase y los del booklets nº3 y nº4
 //y lo que no me salió es almacenar un valor de una variable y luego pasarla a otra función
+//quiero decir usando ciclos no me salió
 
 let entrada = prompt(`Elegir un producto:
 1. Plato artesanal
