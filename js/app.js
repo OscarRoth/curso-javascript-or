@@ -1,14 +1,8 @@
 //quiero que el carrito se muestren productos de tipos de piezas de cerámica, 
 //elegir categoría y luego sumar cantidad de esa categoría
 //me base en ejemplos vistos en clase y los del booklets nº3 y nº4
-//y lo que no me salió es almacenar un valor de una variable y luego pasarla a otra función
-//quiero decir usando ciclos no me salió
-
-
-//const objeto1 = { id: 2, producto: "zanahoria" };
-//const array = [objeto1, { id: 5, producto: "choclo" }]
-//array.push({ id: 7, producto: "batata" });
-//console.log(array);
+//ya me salió lo que buscaba hacer,era ingresar dos tipos de valores por prompt y devolver por consola todos los ingresos y
+//un mensaje por cada tipo de ingreso.
 
 let entrada = prompt(`Elegir el producto:
 1.Plato artesanal
@@ -62,11 +56,11 @@ console.log("Elegiste: " + entradaCant + " unidades.");
 
 
 
+/* Array  clase 6 */
 
+//const objeto1 = { id: 2, producto: "Vaso de Engobe" };
+//const array = [objeto1, { id: 5, producto: "Plato artesanal" }]
+//array.push({ id: 7, producto: "" });
+//console.log(array);
 
-
-//if (entrada = entrada) {
- //   console.log("Usted eligió el producto " + entrada);
-//} else {
-//    console.log("Usted no eligió producto.");
-//}
+/* AFunciones de orden superior  clase 7 */
