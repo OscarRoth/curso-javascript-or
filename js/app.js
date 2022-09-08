@@ -37,6 +37,8 @@ let entradaCant = prompt(`Elegir cantidad:
 4
 5`);
 
+
+
 if (entradaCant === 1) {
     console.log("Elegiste" + entradaCant);
 } else if (entradaCant === 2) {
