@@ -4,14 +4,29 @@ const contenedorCarrito = document.getElementById('carrito-contenedor');
 
 const botonVaciarCarrito = document.getElementById('vaciar-carrito');
 
+const precioTotal = document.getElementById('precioTotal')
 
 let carrito = []
 
+//utilizar el local storage para guardar la informacion acumulada, o sea que efectuo la compra y por mas que refresque la pagina el valor acumulado permanece
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')) {
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        //se guarda en storage cuando se ejecuta la funcion de actualizacion del carrito
+        actualizarCarrito()
+    }
+})
+
+
+//funcion para vaciar el carrito mediante un evento, y se ejecuta cuando se actualiza el carrito
 botonVaciarCarrito.addEventListener('click', () => {
     carrito.length = 0
     actualizarCarrito()
 });
 
+
+// se inyectan elementos de DOM para armar la estructura del html para visualizar la lista de productos en el carrito
 stockProductos.forEach((producto) => {
     const div = document.createElement('div')
     div.classList.add('producto')
@@ -39,8 +54,20 @@ stockProductos.forEach((producto) => {
 
 // esta funcion es para agregar items al carrito
 const agregarAlCarrito = (prodId) => {
-    const item = stockProductos.find((prod) => prod.id === prodId)
-    carrito.push(item)
+
+    const existe = carrito.some(prod => prod.id === prodId)
+    if (existe) {
+        const prod = carrito.map(prod => {
+            if (prod.id === prodId) {
+                prod.cantidad++
+            }
+        })
+    } else {
+        const item = stockProductos.find((prod) => prod.id === prodId)
+        carrito.push(item)
+
+    }
+
     actualizarCarrito()
     //eliminarDelCarrito()
 }
@@ -70,6 +97,12 @@ const actualizarCarrito = () => {
         <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar">Eliminar</button>
         `
         contenedorCarrito.appendChild(div)
-        console.log(div)
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+        //console.log(div)
     })
+
+    contadorCarrito.innerText = carrito.length
+    precioTotal.innerHTML = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+    //console.log(carrito)
+
 }
