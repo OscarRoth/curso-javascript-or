@@ -2,8 +2,15 @@ const contenedorProductos = document.getElementById('contenedor-productos');
 
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 
+const botonVaciarCarrito = document.getElementById('vaciar-carrito');
+
 
 let carrito = []
+
+botonVaciarCarrito.addEventListener('click', () => {
+    carrito.length = 0
+    actualizarCarrito()
+});
 
 stockProductos.forEach((producto) => {
     const div = document.createElement('div')
@@ -30,15 +37,28 @@ stockProductos.forEach((producto) => {
 })
 
 
+// esta funcion es para agregar items al carrito
 const agregarAlCarrito = (prodId) => {
     const item = stockProductos.find((prod) => prod.id === prodId)
     carrito.push(item)
     actualizarCarrito()
-
+    //eliminarDelCarrito()
 }
 
+// funcion para eliminar cada uno de los items agergados al carrito, cuando ya estan agregados al carrito
+
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((prod) => prod.id === prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    actualizarCarrito()
+}
+
+
+//se necesita esta funcion para ir actualizando el contenido del carrito, inyecta elementos de dom al html
 const actualizarCarrito = () => {
 
+    contenedorCarrito.innerHTML = ""
 
     carrito.forEach((prod) => {
         const div = document.createElement('div')

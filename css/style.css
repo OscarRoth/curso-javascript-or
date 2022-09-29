@@ -80,7 +80,7 @@ p {
 
 .modal-active {
     opacity: 1;
-    visibility: hidden;
+    visibility: visible;
 
 }
 
@@ -125,6 +125,11 @@ p {
 
 }
 
+.boton-vaciar {
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+}
 
 
 
