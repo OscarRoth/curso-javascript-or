@@ -1,0 +1,19 @@
+let stockProductos = [
+    { id: 1, tipo: "taza 1", nombre: "taza", cantidad: 1, desc: "una taza que re va con vos", precio: 1200, talle: "L", img: "./img/taza.jpg" },
+    { id: 2, tipo: "taza 2", nombre: "taza", cantidad: 1, desc: "una taza que re va con vos", precio: 100, talle: "L", img: "./img/taza.jpg" },
+    { id: 3, tipo: "taza 3", nombre: "taza", cantidad: 1, desc: "una taza que re va con vos", precio: 200, talle: "L", img: "./img/taza.jpg" },
+    { id: 4, tipo: "taza 4", nombre: "taza", cantidad: 1, desc: "una taza que re va con vos", precio: 850, talle: "L", img: "./img/taza.jpg" },
+    { id: 5, tipo: "vaso 1", nombre: "vaso", cantidad: 1, desc: "un vaso que re va con vos", precio: 1220, talle: "L", img: "./img/vaso.jpg" },
+    { id: 6, tipo: "vaso 2", nombre: "vaso", cantidad: 1, desc: "un vaso que re va con vos", precio: 33400, talle: "L", img: "./img/vaso.jpg" },
+    { id: 7, tipo: "vaso 3", nombre: "vaso", cantidad: 1, desc: "un vaso que re va con vos", precio: 10, talle: "L", img: "./img/vaso.jpg" },
+    { id: 8, tipo: "vaso 4", nombre: "vaso", cantidad: 1, desc: "un vaso que re va con vos", precio: 320, talle: "L", img: "./img/vaso.jpg" },
+    { id: 9, tipo: "fuente 1", nombre: "fuente", cantidad: 1, desc: "una fuente que re va con vos", precio: 200, talle: "L", img: "./img/fuente.jpg" },
+    { id: 10, tipo: "fuente 2", nombre: "fuente", cantidad: 1, desc: "una fuente que re va con vos", precio: 5200, talle: "L", img: "./img/fuente.jpg" },
+    { id: 11, tipo: "fuente 3", nombre: "fuente", cantidad: 1, desc: "una fuente que re va con vos", precio: 700, talle: "L", img: "./img/fuente.jpg" },
+    { id: 12, tipo: "fuente 4", nombre: "fuente", cantidad: 1, desc: "una fuente que re va con vos", precio: 8700, talle: "L", img: "./img/fuente.jpg" },
+    { id: 13, tipo: "plato 1", nombre: "plato", cantidad: 1, desc: "un plato que re va con vos", precio: 200, talle: "L", img: "./img/plato.jpg" },
+    { id: 14, tipo: "plato 2", nombre: "plato", cantidad: 1, desc: "un plato que re va con vos", precio: 5200, talle: "L", img: "./img/plato.jpg" },
+    { id: 15, tipo: "plato 3", nombre: "plato", cantidad: 1, desc: "un plato que re va con vos", precio: 700, talle: "L", img: "./img/plato.jpg" },
+    { id: 16, tipo: "plato 4", nombre: "plato", cantidad: 1, desc: "un plato que re va con vos", precio: 8700, talle: "L", img: "./img/plato.jpg" }
+
+];

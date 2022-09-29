@@ -1,132 +1,55 @@
-//Quiero que el carrito se muestren productos de tipos de piezas de cerámica, 
-//elegir el producto y luego sumar cantidad del producto
+const contenedorProductos = document.getElementById('contenedor-productos');
+
+const contenedorCarrito = document.getElementById('carrito-contenedor');
 
 
-/* simulador interactivo*/
+let carrito = []
+
+stockProductos.forEach((producto) => {
+    const div = document.createElement('div')
+    div.classList.add('producto')
+    div.innerHTML = `
+    <img src=${producto.img} alt="">
+    <h3>${producto.nombre}</h3>
+    <p>${producto.desc}</p>
+    <p>${producto.talle}</p>
+    <p class="precioProdcuto">Precio $ ${producto.precio}</p>
+    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+    `
+    contenedorProductos.appendChild(div);
 
 
+    const boton = document.getElementById(`agregar${producto.id}`)
 
-//while (x <= 5) {
-//    valor = parseInt(prompt('Ingrese valor:'));
-//   suma = suma;
-//    x = x + 1;
-//}
-//console.log('La suma de los valores es ' + suma);
+    boton.addEventListener('click', () => {
+        agregarAlCarrito(producto.id)
 
-
-let plato = 100;
-let vaso = 200;
-let taza = 300;
-let suma = 0;
-let datoIngresado;
-
-do {
-    datoIngresado = parseInt(prompt("¿Qué producto quiere comprar?: 1.Plato, 2.Vaso, 3.Taza, 4.salir de la compra"));
-    switch (datoIngresado) {
-        case 1:
-            // alert("elegiste 1")
-            suma = suma + plato
-            datoIngresado = parseInt(prompt("Ingresar un producto: 1.Plato, 2.Vaso, 3.Taza, 4.saliste"));
-            break;
-        case 2:
-            suma = suma + vaso
-            datoIngresado = parseInt(prompt("Ingresar un producto: 1.Plato, 2.Vaso, 3.Taza, 4.saliste"));
-            //alert("elegiste 2")
-            break;
-        case 3:
-            suma = suma + taza
-            datoIngresado = parseInt(prompt("Ingresar un producto: 1.Plato, 2.Vaso, 3.Taza, 4.saliste"));
-            //alert("elegiste 3")
-            break;
-        default:
-            alert("El numero ingresado no es correcto");
-            break;
-
-    }
-
-} while (datoIngresado != 4);
-
-alert("Compraste por un total de: " + suma);
+    })
 
 
-
-/* clase 5, 6, 7 */
-
-const productos = [{
-    id: 1,
-    name: 'Plato artesanal',
-    price: 10,
-
-},
-
-{
-    id: 2,
-    name: 'Taza de engobe',
-    price: 15,
-
-},
-
-{
-    id: 3,
-    name: 'Vaso para submarino',
-    price: 20,
-
-},
-
-{
-    id: 4,
-    name: 'Fuente de ensalada',
-    price: 10,
-
-},
+})
 
 
-]
+const agregarAlCarrito = (prodId) => {
+    const item = stockProductos.find((prod) => prod.id === prodId)
+    carrito.push(item)
+    actualizarCarrito()
 
-const product = (cantidad) => {
-
-    const arrayProducto = [];
-
-
-    for (let i = 0; i < productos.length; i++) {
-
-        arrayProducto.push({
-            id: productos[i].id,
-            nombre: productos[i].name,
-            'Precio Unitario': productos[i].price,
-            Cantidad: cantidad,
-            'Precio Total': productos[i].price * cantidad
-        })
-    };
-
-    return arrayProducto
 }
 
-
-const platoArtesanal = product(2)[0]
-console.log('Plato Artesanal :', platoArtesanal);
-
-const tazaDeEngobe = product(4)[1]
-console.log('Taza de Engobe :', tazaDeEngobe);
-
-const vasoSubmarino = product(4)[2]
-console.log('Vaso para submarino :', vasoSubmarino);
-
-const fuenteEnsalada = product(4)[3]
-console.log('Fuente de ensalada :', fuenteEnsalada);
+const actualizarCarrito = () => {
 
 
-/* clase 8 DOM */
-const li = document.createElement("li")
-const ul = document.getElementById("ul").appendChild(li).innerHTML = platoArtesanal.nombre
-
-
-// .innerHTML = '<li>Primer Producto</li>'
-// ul.appendChild(renderizado)
-
-// console.log(renderizado);
-
-// let agregado = document.createElement("h5");
-// console.log(agregado);
-// agregado.innerHTML = "<h5>Parrado de demostracion</h5>";
-// document.body.appendChild(agregado);
+    carrito.forEach((prod) => {
+        const div = document.createElement('div')
+        div.className = ('productoEnCarrito')
+        div.innerHTML = `
+        <p>${prod.nombre}</p>
+        <p>Precio: ${prod.precio}</p>
+        <p>Cantidad: <span id="cantidad">${prod.cantidad}</span></p>
+        <button onclick="eliminarDelCarrito(${prod.id})" class="boton-eliminar">Eliminar</button>
+        `
+        contenedorCarrito.appendChild(div)
+        console.log(div)
+    })
+}
