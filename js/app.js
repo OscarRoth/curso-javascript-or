@@ -71,41 +71,45 @@ botonVaciarCarrito.addEventListener('click', () => {
 
 const contenedorProductos = document.getElementById('contenedor-productos');
 
-fetch('./js/stock.json')
-    .then((res) => res.json())
-    .then((stockProductos) => {
+const llamada = async () => {
 
-        stockProductos.forEach((producto) => {
-            const div = document.createElement('div')
-            div.classList.add('producto')
-            div.innerHTML = `
-        <img src=${producto.img} alt="">
-        <h3>${producto.nombre}</h3>
-        <p>${producto.desc}</p>
-        <p>${producto.talle}</p>
-        <p class="precioProdcuto">Precio $ ${producto.precio}</p>
-        <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
-        `
-            contenedorProductos.appendChild(div);
+    const respuesta = await fetch('./js/stock.json')
+    const stockProductos = await respuesta.json()
 
+    stockProductos.forEach((producto) => {
+        const div = document.createElement('div')
+        div.classList.add('producto')
+        div.innerHTML = `
+            <img src=${producto.img} alt="">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.desc}</p>
+            <p>${producto.talle}</p>
+            <p class="precioProdcuto">Precio $ ${producto.precio}</p>
+            <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+            `
+        contenedorProductos.appendChild(div);
 
-            const boton = document.getElementById(`agregar${producto.id}`)
+        const boton = document.getElementById(`agregar${producto.id}`)
 
-            boton.addEventListener('click', () => {
-                agregarAlCarrito(producto.id)
-                //console.log('mensajito')
-                Swal.fire({
-                    title: `Agregaste <strong>${producto.nombre}</strong> al carrito`,
-                    text: 'Clickea el boton ok para seguir comprando.',
-                    icon: 'success',
-                    //confirmButtonText: 'Cool'
-                })
-
+        boton.addEventListener('click', () => {
+            agregarAlCarrito(producto.id)
+            //console.log('mensajito')
+            Swal.fire({
+                title: `Agregaste <strong>${producto.nombre}</strong> al carrito`,
+                text: 'Clickea el boton ok para seguir comprando.',
+                icon: 'success',
+                //confirmButtonText: 'Cool'
             })
-
-
         })
     })
+}
+llamada()
+
+// fetch('./js/stock.json')
+//     .then((res) => res.json())
+//     .then((stockProductos) => {
+
+//     })
 
 
 
