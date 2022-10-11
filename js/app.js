@@ -1,4 +1,4 @@
-const contenedorProductos = document.getElementById('contenedor-productos');
+
 
 const contenedorCarrito = document.getElementById('carrito-contenedor');
 
@@ -17,6 +17,33 @@ const precioTotal = document.getElementById('precioTotal')
 //         confirmButtonText: 'Cool'
 //     })
 // })
+
+
+// setTimeout(() => {
+//     console.log('aqui estoy')
+// }, 3000)
+
+// const prodictos = [
+//     { id: 1, nombre: 'carapalida', precio: 300 }
+// ]
+
+
+// const findID = (id) => {
+//     const prodi = prodictos.find((item) => item.id === id)
+//     return new Promise((resolve, reject) => {
+//         if (prodi) {
+//             resolve(prodi)
+//         } else {
+//             reject('no esta')
+//         }
+//     })
+// }
+
+// findID(1)
+//     .then((prodi) => (console.log(prodi)))
+//     .catch((err) => (console.log(err)))
+
+// console.log(fetch('http://koraiken.ar/js/stock.js'))
 
 
 
@@ -41,36 +68,45 @@ botonVaciarCarrito.addEventListener('click', () => {
 
 
 // se inyectan elementos de DOM para armar la estructura del html para visualizar la lista de productos en el carrito
-stockProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${producto.img} alt="">
-    <h3>${producto.nombre}</h3>
-    <p>${producto.desc}</p>
-    <p>${producto.talle}</p>
-    <p class="precioProdcuto">Precio $ ${producto.precio}</p>
-    <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
-    `
-    contenedorProductos.appendChild(div);
+
+const contenedorProductos = document.getElementById('contenedor-productos');
+
+fetch('./js/stock.json')
+    .then((res) => res.json())
+    .then((stockProductos) => {
+
+        stockProductos.forEach((producto) => {
+            const div = document.createElement('div')
+            div.classList.add('producto')
+            div.innerHTML = `
+        <img src=${producto.img} alt="">
+        <h3>${producto.nombre}</h3>
+        <p>${producto.desc}</p>
+        <p>${producto.talle}</p>
+        <p class="precioProdcuto">Precio $ ${producto.precio}</p>
+        <button id="agregar${producto.id}" class="boton-agregar">Agregar <i class="fas fa-shopping-cart"></i></button>
+        `
+            contenedorProductos.appendChild(div);
 
 
-    const boton = document.getElementById(`agregar${producto.id}`)
+            const boton = document.getElementById(`agregar${producto.id}`)
 
-    boton.addEventListener('click', () => {
-        agregarAlCarrito(producto.id)
-        console.log('mensajito')
-        Swal.fire({
-            title: `Agregaste <strong>${producto.nombre}</strong> al carrito`,
-            text: 'Clickea el boton ok para seguir comprando.',
-            icon: 'success',
-            //confirmButtonText: 'Cool'
+            boton.addEventListener('click', () => {
+                agregarAlCarrito(producto.id)
+                //console.log('mensajito')
+                Swal.fire({
+                    title: `Agregaste <strong>${producto.nombre}</strong> al carrito`,
+                    text: 'Clickea el boton ok para seguir comprando.',
+                    icon: 'success',
+                    //confirmButtonText: 'Cool'
+                })
+
+            })
+
+
         })
-
     })
 
-
-})
 
 
 // esta funcion es para agregar items al carrito
