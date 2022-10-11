@@ -6,6 +6,20 @@ const botonVaciarCarrito = document.getElementById('vaciar-carrito');
 
 const precioTotal = document.getElementById('precioTotal')
 
+//btn de sweet alert
+// const btnAlert = document.querySelector('#btn-alert');
+
+// btnAlert.addEventListener('click', () => {
+//     Swal.fire({
+//         title: 'Error!',
+//         text: 'Do you want to continue',
+//         icon: 'error',
+//         confirmButtonText: 'Cool'
+//     })
+// })
+
+
+
 let carrito = []
 
 //utilizar el local storage para guardar la informacion acumulada, o sea que efectuo la compra y por mas que refresque la pagina el valor acumulado permanece
@@ -45,6 +59,13 @@ stockProductos.forEach((producto) => {
 
     boton.addEventListener('click', () => {
         agregarAlCarrito(producto.id)
+        console.log('mensajito')
+        Swal.fire({
+            title: `Agregaste <strong>${producto.nombre}</strong> al carrito`,
+            text: 'Clickea el boton ok para seguir comprando.',
+            icon: 'success',
+            //confirmButtonText: 'Cool'
+        })
 
     })
 
